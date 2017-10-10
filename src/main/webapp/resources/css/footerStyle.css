@@ -1,0 +1,32 @@
+#footerlabel{
+    margin-bottom: 2px;
+}
+#hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    width: 11%;
+    border-top: 1px solid #ffffff;
+    margin-top: 4px;
+    padding: 0;
+}
+
+#footer {
+    min-height: 80px;
+    padding: 20px;
+    width: 755px;
+    margin-left: 25%;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px dotted #000000;
+    border-right: 1px dotted #000000;
+
+    border-radius: 5px;
+
+
+}
+#footertitle{
+    margin: 0px;
+    border-radius: 4px;
+}
+

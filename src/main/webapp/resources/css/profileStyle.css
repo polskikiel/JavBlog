@@ -1,0 +1,150 @@
+.stats {
+    margin-right: auto;
+}
+.date {
+    float: right;
+}
+
+.profilephoto{
+    height: 160px;
+    width: 160px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 80px;
+}
+.header {
+    display: inline;
+}
+.header:hover {
+    font-weight: bold;
+}
+
+#profileinfo{
+    max-width: 288px;
+    background-color: rgba(255,255,255,0);
+
+}
+input[type=text] {
+    width: 50%;
+    margin-top: 0px;
+}
+
+.myArticles {
+    margin-top: 50px;
+}
+
+.myArticles h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.yourArticles a:hover {
+}
+
+#profileDesc{
+    background-color: rgba(255,255,222,0);
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    min-height: 50px;
+    margin-left: 19%;
+    font-weight: bold;
+    border: 1px ridge #444444;
+    border-left: dashed 1px #444444;
+    border-right: dashed 1px #444444;
+
+    width: 60%;
+}
+
+.articleDesc img {
+     height: 15px;
+     width: 15px;
+ }
+#containerOp{
+    border-radius: 5px;
+    float: left;
+    text-align: justify;
+    padding: 20px;
+    width: 755px;
+    margin-left: 25%;
+    margin-right: 5px;
+}
+
+#editsection input[type=submit] {
+    width: 24%;
+    background-color: #67789a;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.post {
+    float: left;
+    width: 345px;
+    height: 150px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border: 1px black dashed;
+    border-top: 1px #3b3c41 solid;
+    text-align: left;
+}
+
+.post:hover .articleDesc{
+    font-weight: bold;
+}
+#lastActivities{
+}
+
+#editsection{
+    width: 400px;
+    text-align: center;
+    margin: auto;
+}
+.yourArticles {
+    margin-left: 3%;
+    width: 100%;
+}
+
+.profileinfo2{
+
+    width: 287px;
+    background-color: #f2f2f2;
+    margin-left: 80%;
+    margin-top: 5px;
+    text-align: center;
+    font-size: large;
+    max-font-size: 30px;
+    font-family: 'Lobster', cursive;
+}
+.profileinfo2:hover{
+    background-color: #67789a;
+}
+.editPanel {
+    float: right;
+}
+.editPanel img {
+    width: 15px;
+    height: 15px;
+}
+#pages {
+    text-align: center;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    cursor: pointer;
+    color: white;
+}
+h2{
+    font-family: 'Lobster', cursive;
+    font-weight: 100;
+    font-size: 30px;
+    text-align: center;
+    opacity: 1;
+}

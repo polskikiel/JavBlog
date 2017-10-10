@@ -1,0 +1,141 @@
+.searchSection {
+    float: left;
+}
+#pageNr {
+    margin-top: 5px;
+    text-align: center;
+    font-stretch: ultra-expanded;
+}
+.sortSection {
+    display: inline;
+    margin-top: 3px;
+}
+
+.inputContainer {
+}
+
+.tagsChooseContainer {
+    float: left;
+}
+
+.buttonContainer {
+    border-radius: 5px;
+    width: 100px;
+    margin-bottom: 0px;
+}
+
+.lastSearch {
+}
+
+.lastSearch a {
+}
+.buttonsSection {
+    float: left;
+    margin-left: 10%;
+}
+
+.linkContainer {
+    float: left;
+    width: 100px;
+    padding: 30px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 3px;
+    border: 1px black solid;
+
+}
+
+.linkContainer:hover {
+    background-color: #afbffa;
+}
+
+.inputContainer input[type=text] {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.tagsSec {
+    font-size: 9px;
+}
+
+.inputContainer input[type=submit] {
+    padding: 1px;
+
+}
+
+.wholeArticleContainer:first-of-type {
+    margin-top: 0px;
+}
+
+.wholeArticleContainer {
+    border-bottom: 1px solid #a0a0a0;
+    margin-top: 6px;
+}
+
+.wholeArticleContainer:hover {
+    background-color: #afafaf;
+
+}
+.lastSearch a:hover {
+    color: #a94442;
+}
+.hoverPanel:hover {
+
+}
+.articlesSection {
+
+    border: 1px solid black;
+    border-left: 1px dotted black;
+    border-right: 1px dotted black;
+
+    border-radius: 5px;
+    width: 735px;
+}
+
+.articlesSection img {
+    height: 15px;
+    width: 15px;
+
+}
+
+.sortInfo {
+    font-size: 9px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.searchUsers {
+    margin-top: 50px;
+}
+
+.articleAuthor {
+    float: right;
+    display: inline;
+}
+
+.articleSection {
+    float: left;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.articleAuthor img {
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.dateSection {
+    font-size: 9px;
+}
+
+.articlesSection a {
+
+}
+
+.articlesSection a:hover {
+    color: #112345;
+    font-weight: 700;
+}

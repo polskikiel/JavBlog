@@ -1,0 +1,143 @@
+#lastMessages{
+    float: left;
+    width: 45%;
+    margin-left: 2%;
+}
+#sentMessage{
+    float: left;
+    margin-left: 5%;
+    width: 45%;
+}
+
+.messagesLabel{
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Lobster', cursive;
+}
+#buttons {
+    margin-top: 10px;
+    margin-left: 29%;
+}
+.wantContact{
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    font-weight: 600;
+}
+.wantContact:hover {
+    font-weight: 200;
+    color: #f2f2f2;
+}
+.searchButton{
+    margin-bottom: 5px;
+    text-align: center;
+    padding: 10px;
+    width: 50%;
+    border-radius: 5px;
+    font-size: 24px;
+    font-family: 'Lato', sans-serif;
+}
+.searchSection {
+    margin-left: 45%;
+
+
+}
+.searchSection input[type=submit] {
+    margin-left: 66%;
+}
+.noMsg {
+    text-align: center;
+    font-size: 14px;
+}
+
+.searchButton:hover{
+    color: #ffffff;
+}
+
+a{
+    text-decoration: none;
+}
+#messages{
+    border-radius: 5px;
+    float: left;
+    text-align: justify;
+    padding: 20px;
+    width: 755px;
+    border: solid 1px white;
+    margin: auto;
+    margin-left: 25%;
+    margin-right: 5px;
+}
+.contact{
+    border-radius: 5px;
+}
+
+.contactImg{
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+.contactName{
+    float: left;
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    margin-left: 10%;
+    font-size: 18px;
+}
+a:active{
+    color: black;
+    text-decoration: none;
+}
+a:visited{
+    color: black;
+}
+
+a:hover{
+    color: whitesmoke;
+}
+.messageShort{
+    font-size: 15px;
+    text-decoration: none;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.msg1{
+    text-align: right;
+    background-color: rgba(212,212,212, 0.5);
+    padding: 20px;
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 50%;
+    border-radius: 5px;
+}
+
+.msg2{
+    text-align: left;
+    background-color: rgba(100,80,200, 0.5);
+    padding: 20px;
+    width: 50%;
+    margin-top: 2%;
+    border-radius: 5px;
+}
+
+#search{
+    float: left;
+    padding: 0px;
+    text-align: center;
+}
+
+#searchTitle{
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+}
+
+input[type=input] {
+    padding: 0;
+}
+.afterMsgHr {
+    width: 100%;
+}

@@ -1,0 +1,156 @@
+body {
+    background: linear-gradient(to bottom right, #ffffff, #112345); /* Standard syntax */
+    font-family: 'Lato', sans-serif;
+    width: 1400px;
+    min-height: 2000px;
+}
+
+div {
+    border-radius: 5px;
+    padding: 0px;
+}
+
+
+#javalabel {
+    color: #e32109;
+    display: inline;
+}
+
+.headerLabel{
+    font-size: 24px;
+    text-align: center;
+}
+
+.registerlabel {
+    width: 50%;
+
+    font-size: 11px;
+    display: inline;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: bold;
+    text-align: left;
+
+}
+
+.regInput {
+    text-align: center;
+    margin-left: 20px;
+}
+
+.faliure {
+    display: inline;
+    margin-left: 30px;
+    background-color: #a86664;
+}
+
+.visitArticleHeader {
+    font-size: 24px;
+}
+
+.articleImg{
+    float: left;
+    width: 50%;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(55,55,55,0.2);
+}
+
+.post {
+    float: left;
+    width: 345px;
+    height: 150px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border: 1px black dashed;
+    border-top: 1px #3b3c41 solid;
+}
+
+.post:hover{
+    background-color: #f6543c;
+}
+.post:hover .articleDesc{
+    font-weight: bold;
+}
+
+.articleDesc img {
+    height: 15px;
+    width: 15px;
+}
+
+.articleDesc{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.errorMsg {
+    text-align: center;
+    font-size: 30px;
+}
+
+.articleBody{
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(55,55,55,0.1);
+}
+
+.authorLabel{
+    font-size: 8px;
+    text-align: right;
+    float: right;
+
+}
+
+.imgComments {
+    display: inline;
+    float: left;
+    font-size: 11px;
+}
+
+* {
+    margin: 0;
+}
+
+.lobsterfont{
+    font-family: 'Lobster', cursive;
+}
+
+#containerOp{
+    border-radius: 5px;
+    float: left;
+    text-align: justify;
+    padding: 20px;
+    width: 755px;
+    margin-left: 25%;
+    margin-right: 5px;
+}
+#container {
+    border-radius: 5px;
+    float: left;
+    text-align: justify;
+    padding: 20px;
+    width: 755px;
+    background-color: #f2f2f2;
+    margin-left: 25%;
+    margin-right: 5px;
+
+}
+
+#site{
+    min-height: 1200px;
+    resize: none;
+}
+
+h1{
+    text-align: center;
+    font-size: 26px;
+}
+hr{
+    width: 50%;
+    margin-left: 25%;
+}
+
+#lastPosts{
+    margin: 20px;
+}

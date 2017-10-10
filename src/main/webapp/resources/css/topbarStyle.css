@@ -1,0 +1,168 @@
+input[type=button]{
+    margin-left: 25%;
+    padding: 1%;
+    color: black;
+    font-weight: 100;
+    font-size: 12px;
+    width: 45%;
+    border-radius: 5px;
+    border: none;
+    display: inline;
+}
+input[type=button]:last-of-type {
+
+}
+input[type=button]:hover{
+    background-color: #67789a;
+    color: #e32109;
+    cursor: pointer;
+}
+
+nav {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+ul {
+    overflow: auto;
+    list-style-type: none;
+}
+
+li {
+    height: 90px;
+    float: left;
+    margin-right: 0px;
+    border-right: 1px solid #000000;
+    padding: 0 20px;
+
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    text-decoration: none;
+    color: #112345;
+    font: 25px/1 Helvetica, Verdana, sans-serif;
+
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.2s ease;
+}
+
+li a:hover {
+    color: #111111;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+
+}
+.newMessage{
+    color: #e32109;
+}
+#javaphoto{
+    height: 78px;
+}
+li.active a {
+    font-weight: 500;
+    color: #333;
+}
+li.active a:hover {
+    color: #fafafa;
+}
+
+
+
+.faliure{
+    padding: 10px;
+    border-radius: 4px;
+}
+#toptopbar {
+    float: left;
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 5px;
+    width: 175px;
+    height: 90px;
+    border: solid 1px #555555;
+    border-right: none;
+    border-left: none;
+    margin-left: 7px;
+}
+#topbar {
+    width: 795px;
+    text-align: center;
+    margin: 5px;
+    margin-left: 25%;
+    padding-bottom: 10px;
+    font-size: 58px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    float: left;
+
+}
+
+#toptopbar input[type=submit] {
+    padding: 2%;
+    color: black;
+    font-weight: 100;
+    font-size: 12px;
+    border-radius: 5px;
+    margin-left: 16%;
+    margin-top: 5%;
+    border: none;
+    display: inline;
+}
+#toptopbar input[type=submit]:hover {
+    background-color: #67789a;
+    color: #e32109;
+    cursor: pointer;
+}
+
+#welcomeLabel {
+    font-size: 8px;
+    padding: 0px;
+}
+
+.userName{
+    float: left;
+    margin-left: 5%;
+    margin-top: 5%;
+    font-size: 16px;
+}
+.profileImg{
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.newMsgNr {
+    color: indianred;
+    display: inline;
+    background-color: #554637;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.newMsgLabel{
+    font-size: 12px;
+}
+
+#logout{
+    display: inline;
+    margin-left: 4%;
+}
+
+.madeArticles{
+
+    padding: 2%;
+    font-size: 12px;
+    font-weight: 500;
+}

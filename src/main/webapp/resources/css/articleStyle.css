@@ -1,0 +1,43 @@
+#articleBody{
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.articleHeader{
+    font-size: 26px;
+}
+
+.tags{
+    font-size: 10px;
+    display: inline;
+    border-right: 1px solid black;
+    padding-right: 5px;
+    margin-left: 5px;
+}
+#article {
+
+}
+.pageNr {
+    text-align: center;
+}
+.pageNr a {
+    font-stretch: extra-expanded;
+
+}
+pageNr1 {
+    margin-left: 10px;
+}
+.tags:first-child{
+
+}
+.tags:last-of-type{
+    border-right: none;
+}
+a{
+    color: #324;
+}
+
+.tagsContainer{
+    margin-left: auto;
+}
+
