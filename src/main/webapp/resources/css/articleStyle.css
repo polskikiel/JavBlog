@@ -9,6 +9,7 @@
 
 .tags{
     font-size: 10px;
+    float: left;
     display: inline;
     border-right: 1px solid black;
     padding-right: 5px;
@@ -17,11 +18,18 @@
 #article {
 
 }
+#containerOp input[type=checkbox] {
+    display: inline;
+}
 .pageNr {
     text-align: center;
 }
 .pageNr a {
     font-stretch: extra-expanded;
+}
+input[type=textarea]{
+    height: 400px;
+
 
 }
 pageNr1 {
@@ -39,5 +47,6 @@ a{
 
 .tagsContainer{
     margin-left: auto;
+    height: 40px;
 }
 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import pl.blog.converters.TextToHTML;
 import pl.blog.domain.Article;
 import pl.blog.domain.Comment;
@@ -38,6 +39,11 @@ public class ArticleController {
         this.services = services;
     }
 
+    @ModelAttribute("cat")
+    public String[] category() {
+        return services.getLabels();
+    }
+
     @GetMapping("/articles")
     public String getArticles(Model model, HttpServletRequest request, HttpSession session, HttpServletResponse response,
                               @RequestParam(value = "sort", required = false, defaultValue = "0") Integer sort,
@@ -49,7 +55,6 @@ public class ArticleController {
         model.addAttribute("sort", new SortDTO());
         model.addAttribute("text", new SearchArticleDTO());
         model.addAttribute("sortOptions", services.getSortOptions());
-        model.addAttribute("tags", services.getLabels());
 
         if (sort != 0 || search != null || categories != null) {
             model.addAttribute("queryString", request.getQueryString().split("&page")[0]);
@@ -64,7 +69,7 @@ public class ArticleController {
             session.setAttribute("sortNr", sort);
         }
 
-        switch ((Integer) session.getAttribute("sortNr")) {
+        switch ((Integer) session.getAttribute("sortNr")) {         // INVIDUAL CONTROLLER FOR THIS AND sortedArticles as SESSION ATT
             case 0: {
                 model.addAttribute("sortedArticles",
                         services.searchArticles(services.getArticlesWithoutWelcomePage(), search, categories));
@@ -97,9 +102,60 @@ public class ArticleController {
         return "articles";
     }
 
-    @PostMapping("/articles")
+
+
     @PreAuthorize("hasRole('ROLE_USER')")
-    public String postArticles(Model model, HttpSession session, HttpServletResponse response,
+    @GetMapping("/articles/search")
+    public String searchArticles(Model model, HttpSession session, HttpServletResponse response, SessionStatus status,
+                                 @ModelAttribute("sort") SortDTO sortDTO,
+                                 @ModelAttribute("text") SearchArticleDTO searchArticleDTO) {
+        model.addAttribute("cat", "");
+
+
+        if (sortDTO.getSort() != null) {
+            if (sortDTO.getSort() != 0) {
+                session.setAttribute("sortNr", sortDTO.getSort());      // setting this attribute on session scope because
+                // i want the sort option to remember its value till next change of this value
+            }
+        }
+        if (session.getAttribute("sortCache") == null) {
+            session.setAttribute("sortCache", "&search=&tag=");
+        }
+
+        StringBuilder stringBuilder = new StringBuilder(session.getAttribute("sortCache").toString());
+
+        if (searchArticleDTO.getCategory() != null || searchArticleDTO.getText() != null) {
+            if (searchArticleDTO.getText() != null && searchArticleDTO.getCategory() != null) {
+                stringBuilder.delete(7, stringBuilder.length() - 1);
+                stringBuilder.append(searchArticleDTO.getText() + "&tag=" + services.tagsToRequest(searchArticleDTO.getCategory()));
+
+            } else if (searchArticleDTO.getText() != null) {
+                stringBuilder.delete(7, stringBuilder.length() - 1);
+                stringBuilder.append(searchArticleDTO.getText() + session.getAttribute("sortCache").toString().split("=")[2].split("&")[0]);
+
+            } else if (searchArticleDTO.getCategory() != null) {
+                stringBuilder.delete(7, stringBuilder.length() - 1);
+                stringBuilder.append(session.getAttribute("sortCache").toString().split("=")[1].split("&")[0] + "&tag=" + services.tagsToRequest(searchArticleDTO.getCategory()));
+
+            }   // can't send some chars by cookie     char(44)
+        } else {
+            return "redirect:/articles?sort=" + session.getAttribute("sortNr") + session.getAttribute("sortCache");
+        }
+
+
+        if (session.getAttribute("sortCache") == null && stringBuilder.length() == 13) {
+            session.setAttribute("sortCache", "&search=&tag=");
+        } else {
+            session.setAttribute("sortCache", stringBuilder.toString());
+        }
+
+
+        return "redirect:/articles?sort=" + session.getAttribute("sortNr") + session.getAttribute("sortCache");
+    }
+
+   /* @PostMapping("/articles")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public String postArticles(HttpSession session,
                                @ModelAttribute("sort") SortDTO sortDTO,
                                @ModelAttribute("text") SearchArticleDTO searchArticleDTO) {
 
@@ -143,7 +199,7 @@ public class ArticleController {
 
 
         return "redirect:/articles?sort=" + session.getAttribute("sortNr") + session.getAttribute("sortCache");
-    }
+    }*/
 
     @GetMapping("/article/{id}")
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -152,25 +208,6 @@ public class ArticleController {
                                  @RequestParam(value = "edit", required = false) String edit,
                                  @RequestParam(value = "delete", required = false) String delete,
                                  @RequestParam(value = "page", defaultValue = "0") Integer page) {
-
-        try {
-            if (isCreator(request, id)) {
-                if (delete != null) {
-                    services.deleteArticle(id);
-                    return "redirect:/profile#yourArticles";
-                }
-
-                if (edit != null) {
-                    model.addAttribute("articleToEdit", new ArticleDTO());
-                    model.addAttribute("cat", services.getLabels());
-                    model.addAttribute("editMode", true);
-                }
-            }
-        } catch (NullPointerException npe) {
-            return "redirect:/articles";
-        }
-
-
         model.addAttribute("pageNr", page);
         model.addAttribute("comment", new TextDTO());
         model.addAttribute("commentComment", new CommentCommentsDTO());
@@ -179,10 +216,25 @@ public class ArticleController {
             services.articleVisitCounter(id);
             model.addAttribute("comments", services.getCommentsFromArticleId(id));
             model.addAttribute("article", TextToHTML.articleTexts(services.getArticleById(id)));
+
+            if (isCreator(request, id)) {
+                if (delete != null) {
+                    services.deleteArticle(id);
+                    return "redirect:/profile#yourArticles";
+                }
+
+                if (edit != null) {
+                    ArticleDTO articleDTO = new ArticleDTO();
+                    articleDTO.setBody(services.getArticleById(id).getBody());
+                    model.addAttribute("articleToEdit", articleDTO);
+                    model.addAttribute("editMode", true);
+                    return "article";
+                }
+            }
         } catch (NullPointerException npe) {
-            //throw new NullPointerException("article id: " + id + " not found");
             return "redirect:/articles";
         }
+
         return "article";
     }
 
@@ -216,7 +268,6 @@ public class ArticleController {
     @GetMapping("/newarticle")
     public String getArticle(Model model) {
         model.addAttribute("article", new ArticleDTO());
-        model.addAttribute("cat", services.getLabels());
 
         return "addarticle";
     }
@@ -226,7 +277,6 @@ public class ArticleController {
                               Model model, HttpServletRequest request) {
 
         Map<String, String> map = services.failures(articleDTO);
-        model.addAttribute("cat", services.getLabels());
 
         if (map != null) {      // null if empty from errors
             model.addAttribute("faliure", map);

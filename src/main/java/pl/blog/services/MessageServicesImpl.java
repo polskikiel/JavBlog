@@ -50,6 +50,7 @@ public class MessageServicesImpl implements MessageServices {
     }
 
     public void addWelcomeMsg(Users user) {
+        System.out.println(msgBot.getUsername());
         sendMessage(user.getId(), msgBot.getUsername(), "Welcome on my page." +
                 "Now after you successful login you can customize your profile and create your own article." +
                 "Have fun!", "Hello sir!");

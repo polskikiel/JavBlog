@@ -27,8 +27,7 @@ function articleTextReturn(text, page) {        // for articles -> article.jsp
         if (start)
             htmlText += text.charAt(i);
     }
-    var x = document.createElement("INPUT");
-    x.setAttribute("type", "textarea");
+    var x = document.createElement("textarea");
     x.setAttribute("value", htmlText);
     x.setAttribute("path", "body");
     document.getElementById("containerOp").appendChild(x);

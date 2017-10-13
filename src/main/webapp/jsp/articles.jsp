@@ -30,17 +30,20 @@
 <div id="site">
     <article id="containerOp">
         <div class="inputContainer">
+            <p class="lobsterfont">
+                Search
+            </p>
             <section class="searchSection">
-                <form:form method="post" action="/articles" modelAttribute="text">
+                <form:form method="get" action="/articles/search" modelAttribute="text">
                     <form:input path="text"/>
                     <br/>
-                    <c:forEach items="${tags}" var="tag" varStatus="i">
+                    <c:forEach items="${cat}" var="tag" varStatus="i">
                         <c:choose>
                             <c:when test="${param['tag'].contains(tag)}">
                                 <form:checkbox path="category" value="${tag}" checked="s"/>
                             </c:when>
                             <c:otherwise>
-                                <form:checkbox path="category" value="${tag}" checked=""/>
+                                <form:checkbox path="category" value="${tag}"/>
                             </c:otherwise>
                         </c:choose>
                         ${tag}
@@ -64,27 +67,31 @@
                         </div>
                     </a>
                 </section>
+                <section class="buttonContainer">
+                    <section class="linkContainer">
+                        <a href="${lastSearch}">
+                            Last search
+                        </a>
+                    </section>
+                </section>
+                <div style="clear: both;"/>
             </section>
-            <div style="clear: both;"/>
-            <section class="lastSearch">
-                <a href="${lastSearch}">
-                    Last search
-                </a>
-            </section>
+
+
 
             <br/>
 
             <section class="sortSection">
-                <form:form method="post" action="/articles" modelAttribute="sort">
+                <form:form method="get" action="/articles/search" modelAttribute="sort">
                 <form:select path="sort" id="sort">
                 <c:forEach items="${sortOptions}" varStatus="index" var="option">
                     <form:option value="${index.count}">${option}</form:option>
                 </c:forEach>
                 </form:select>
-
+                <br/>
                 <input type="submit" value="Sort"/>
                 </form:form>
-        </div>
+            </section>
 
         <c:set var="articleslength" value="${fn:length(sortedArticles)}"/>
         <p class="sortInfo">
@@ -111,6 +118,7 @@
                 </c:otherwise>
             </c:choose>
         </p>
+        </div>
         <c:if test="${articleslength > 0}">
             <section class="articlesSection">
                 <c:forEach items="${sortedArticles}" var="article" varStatus="index"

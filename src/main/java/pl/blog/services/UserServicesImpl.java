@@ -46,6 +46,10 @@ public class UserServicesImpl implements UserServices {
         return authorities;
     }
 
+    public int getCount() {
+        return (int)userRepo.count();
+    }
+
     @Override
     public Long getIdFromUsername(String username) {
         if (userRepo.findUserByUsername(username).isPresent()) {

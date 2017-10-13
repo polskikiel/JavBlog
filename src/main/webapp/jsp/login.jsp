@@ -29,7 +29,7 @@
                 <c:set var="loginUrl"><c:url value="/login"/></c:set>
                 <form method="post" action="${loginUrl}">
                     <p id="loginpagelabel">Login page</p>
-                    <input type="text" name="username" placeholder="Login"/><br/>
+                    <input type="text" name="username" placeholder="Login" autofocus/><br/>
                     <input type="password" name="password" placeholder="Password"/><br/>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <input type="checkbox" name="remember-me"/> <label class="remember">Remember me</label><br/>

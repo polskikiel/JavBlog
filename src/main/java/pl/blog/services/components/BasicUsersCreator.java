@@ -11,12 +11,12 @@ import javax.annotation.PostConstruct;
  * Created by Mike on 15.08.2017.
  */
 @Component
-public class MsgBotCreator {
+public class BasicUsersCreator {
     private Users msgBot;
     private UserRepo userRepo;
 
     @Autowired
-    public MsgBotCreator(Users msgBot, UserRepo userRepo) {
+    public BasicUsersCreator(Users msgBot, UserRepo userRepo) {
         this.msgBot = msgBot;
         this.userRepo = userRepo;
     }

@@ -180,7 +180,7 @@
             <br/>
 
             <section class="yourArticles">
-                <c:if test="${fn:length(userArticles) == 0}">
+                <c:if test="${(fn:length(userArticle)) == 0}">
                     You don't have any articles yet
                 </c:if>
                 <c:forEach items="${userArticle}" var="article" varStatus="index"

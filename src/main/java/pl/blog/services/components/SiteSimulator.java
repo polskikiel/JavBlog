@@ -5,34 +5,57 @@ import org.springframework.stereotype.Component;
 import pl.blog.domain.Article;
 import pl.blog.domain.Comment;
 import pl.blog.domain.Users;
-import pl.blog.dto.ArticleDTO;
 import pl.blog.repos.ArticleRepo;
+import pl.blog.repos.UserRepo;
 import pl.blog.services.ArticleServices;
+import pl.blog.services.UserServicesImpl;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Mike on 10.08.2017.
  */
 @Component
-public class ArticlesCreator {
-    ArticleRepo articleRepo;
-    ArticleServices articleServices;
-    Users adminUser;
-    Article customArticle;
+public class SiteSimulator {
+    private ArticleRepo articleRepo;
+    private ArticleServices articleServices;
+    private Users adminUser;
+    private Article customArticle;
+    private UserServicesImpl userServices;
+    private UserRepo userRepo;
 
     @Autowired
-    public ArticlesCreator(ArticleRepo articleRepo, ArticleServices articleServices, Users adminUser, Article customArticle) {
+    public SiteSimulator(ArticleRepo articleRepo, ArticleServices articleServices, Users adminUser, Article customArticle, UserServicesImpl userServices, UserRepo userRepo) {
         this.articleRepo = articleRepo;
         this.articleServices = articleServices;
         this.adminUser = adminUser;
         this.customArticle = customArticle;
+        this.userServices = userServices;
+        this.userRepo = userRepo;
     }
 
     @PostConstruct
-    public void makeArticle() {
+    public void initSite() {
+
+        Long id = new Long(userServices.listAll().size()+1);
+        Users user = new Users();
+        user.setImgUrl("https://dw9to29mmj727.cloudfront.net/misc/newsletter-naruto3.png");
+        user.setUsername("Rocky");
+        user.setId(id++);
+        userRepo.save(user);
+
+        user.setImgUrl("http://1.fwcdn.pl/ph/06/71/671/401049_1.1.jpg");
+        user.setUsername("Opelo2221");
+
+        user.setId(id++);
+        userRepo.save(user);
+
+        user.setImgUrl("https://consequenceofsound.files.wordpress.com/2017/03/the-matrix-remake.png");
+        user.setUsername("Majek89");
+        user.setId(id++);
+        userRepo.save(user);
+
         articleRepo.save(customArticle);
 
         customArticle.setHeader("Spring Security custom user");
@@ -41,7 +64,7 @@ public class ArticlesCreator {
         customArticle.setImgUrl("https://www.techdotmatrix.com/wp-content/uploads/2016/10/Programming-languages.jpg");
         customArticle.setCategory(new String[]{"Spring", "Security", "Boot", "Data", "Java"});
 
-        Long id = 2L;
+        id = 2L;
         customArticle.setId(id++);
         articleRepo.save(customArticle);
 
@@ -57,7 +80,7 @@ public class ArticlesCreator {
         customArticle.setId(id++);
         articleRepo.save(customArticle);
 
-
+        List<Users> users = userServices.listAll();
         customArticle.setBody("In dictum felis erat, at commodo sem tempor in. Sed aliquet, nibh vel ultrices laoreet, ligula nibh hendrerit erat, eu posuere dui augue eget lectus. Maecenas sodales, sem ut laoreet sagittis, sem diam auctor erat, at bibendum lacus augue sit amet risus. Duis eget tempor ante. Donec porta ligula magna, sit amet laoreet odio congue ac. Pellentesque vitae mattis purus. Duis mauris sapien, luctus sit amet aliquet sed, pretium quis orci." +
                 "Nam posuere justo quis eros venenatis, eget pretium felis molestie. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras tristique semper interdum. Etiam ullamcorper imperdiet libero. Nunc euismod nunc faucibus risus auctor tempus. Fusce eleifend in dui eu rutrum. In at ornare dolor, vel sodales ipsum. Duis vulputate congue nisl sit amet lacinia. Vivamus pharetra fermentum justo ac pulvinar. Maecenas maximus pellentesque urna in condimentum." +
                 "In hac habitasse platea dictumst. Cras in mi a purus congue faucibus. In volutpat mauris metus, id hendrerit felis molestie vitae. Cras vitae justo suscipit, aliquam nulla vitae, viverra ipsum. Nullam at fermentum libero, ut congue augue. Aliquam non nisl tortor. Proin sodales, augue sit amet suscipit auctor, tortor ipsum vulputate massa, quis rhoncus odio tellus vel leo. Mauris quis sapien bibendum, pretium nisl et, gravida neque. Suspendisse ut tincidunt arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
@@ -79,6 +102,9 @@ public class ArticlesCreator {
             customArticle.setHeader("Ipsum Lorem " + id.toString());
             customArticle.setId(id);
 
+            int r = (int) (Math.random() * 1000) % users.size();
+            System.out.println(users.size());
+            customArticle.setUser(users.get(r));
             articleRepo.save(customArticle);
         }
 

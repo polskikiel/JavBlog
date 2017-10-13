@@ -21,12 +21,11 @@
     <link href="<c:url value="/resources/images/favicon.ico"/>" rel="icon" type="image/x-icon"/>
 
     <script src="<c:url value="/resources/js/JSTextToHtml.js"/>"></script>
-    <script src="<c:url value="/resources/js/JSTextEdit.js"/>"></script>
 
     <link href='http://fonts.googleapis.com/css?family=Lato|Josefin+Sans&subset=latin,latin-ext' rel='stylesheet'
           type='text/css'>
 </head>
-<body>
+<body style="min-height: 2000px;">
 <jsp:include page="topbar.jsp"/>
 <article id="containerOp">
     <c:choose>
@@ -36,15 +35,13 @@
                     <section class="category">
                         <form:checkbox path="category" value="${cat}"/>
                             ${cat}
-                        <c:if test="${(index.index % 2) == 0}">
-                            <br/>
-                        </c:if>
                     </section>
                 </c:forEach>
-                <form:input path="imgUrl" value="${article.imgUrl}"/>
-                <form:input path="title" value="${article.header}"/>
-                <script>articleTextReturn('${article.body}', ${pageNr})</script>
-                <input type="submit" value="Edit">
+                <form:input path="imgUrl" value="${article.imgUrl}"/><br/>
+                <form:input path="title" value="${article.header}"/><br/>
+                <form:textarea path="body" cols="100" rows="100"/><br/>
+
+                <input type="submit" value="Edit"><br/>
             </form:form>
         </c:when>
         <c:otherwise>
@@ -75,7 +72,7 @@
         </c:otherwise>
     </c:choose>
 </article>
-<jsp:include page="sidebar.jsp"/>
+<jsp:include page="sidebar.jsp" flush="true"/>
 <div style="clear: both;"/>
 <jsp:include page="footerWithComments.jsp"/>
 

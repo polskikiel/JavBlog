@@ -1,5 +1,5 @@
 .searchSection {
-    float: left;
+    font-size: 15px;
 }
 #pageNr {
     margin-top: 5px;
@@ -9,18 +9,19 @@
 .sortSection {
     display: inline;
     margin-top: 3px;
+
 }
 
 .inputContainer {
+    float: left;
 }
 
 .tagsChooseContainer {
-    float: left;
 }
 
 .buttonContainer {
     border-radius: 5px;
-    width: 100px;
+    width: 50px;
     margin-bottom: 0px;
 }
 
@@ -30,13 +31,11 @@
 .lastSearch a {
 }
 .buttonsSection {
-    float: left;
-    margin-left: 10%;
+    margin-top: 10px;
 }
 
 .linkContainer {
-    float: left;
-    width: 100px;
+    width: 80px;
     padding: 30px;
     font-size: 14px;
     text-align: center;
@@ -51,7 +50,7 @@
 }
 
 .inputContainer input[type=text] {
-    width: 100%;
+    width: 140px;
     margin-bottom: 5px;
 }
 
@@ -61,15 +60,20 @@
 
 .inputContainer input[type=submit] {
     padding: 1px;
-
+    font-family: 'Lato', sans-serif ;
+    background-color: transparent;
+    border: 1px solid #505050;
+    margin-top: 5px;
 }
 
 .wholeArticleContainer:first-of-type {
+    border-top: 1px solid #a0a0a0;
     margin-top: 0px;
 }
 
 .wholeArticleContainer {
     border-bottom: 1px solid #a0a0a0;
+    border-radius: 10px;
     margin-top: 6px;
 }
 
@@ -84,13 +88,11 @@
 
 }
 .articlesSection {
-
-    border: 1px solid black;
-    border-left: 1px dotted black;
-    border-right: 1px dotted black;
-
-    border-radius: 5px;
-    width: 735px;
+    float: left;
+    width: 555px;
+    height: 450px;
+    margin-left: 35px;
+    margin-top: 25px;
 }
 
 .articlesSection img {
@@ -129,6 +131,7 @@
 
 .dateSection {
     font-size: 9px;
+    text-align: right;
 }
 
 .articlesSection a {
