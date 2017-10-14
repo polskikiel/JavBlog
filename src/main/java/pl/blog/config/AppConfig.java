@@ -36,6 +36,7 @@ public class AppConfig {
         return new CustomScopeRegisteringBeanFactoryPostProcessor();
     }
 
+
     @Bean
     public Users adminUser() {
         Users user = new Users("PolskiKiel", BCrypt.hashpw("pass", BCrypt.gensalt(11)), "PolskiKiel@gmail.com", LocalDate.of(1997, 4, 21));

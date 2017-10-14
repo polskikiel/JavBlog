@@ -170,7 +170,7 @@
 
                             <section class="myArticles">
                                 <h1>
-                                        ${someprofile.username} Articles
+                                        __Articles__
                                 </h1>
                             </section>
                         </c:otherwise>
@@ -190,10 +190,12 @@
                         <a href="/article/${article.id}">
                             <img src="${article.imgUrl}" class="articleImg"/>
                         </a>
+
                         <section class="articleDesc">
                             <p class="header">
                                 <a href="/article/${article.id}">${article.header}</a>
                             </p>
+                            <c:if test="${someprofile == null}">
                             <p class="editPanel">
                                 <a href="/article/${article.id}?edit">
                                     <img src="http://www.freeiconspng.com/uploads/edit-new-icon-22.png">
@@ -202,7 +204,9 @@
                                     <img src="https://cdn4.iconfinder.com/data/icons/colicon/24/close_delete-128.png">
                                 </a>
                             </p>
+                            </c:if>
                             <br/>
+
                             <section class="imgComments">
                                 <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/7467-200.png"/>
                                     ${article.visitCounter}
