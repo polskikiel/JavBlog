@@ -42,21 +42,21 @@ public class SecurityConfiguration {
     @Configuration
     @Order(1)   // by setting order we can make multiple security settings and we always can choose which we want to use
     public static class ApiWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
-        @Autowired
         private CustomUserDetailsService userDetailsService;
-
-        @Autowired
         private ConnectionFactoryLocator connectionFactoryLocator;
-
-        @Autowired
         private UsersConnectionRepository usersConnectionRepository;
-
-        @Autowired
         private ConnectionSignUp facebookConnectionSignup;
-
-        @Autowired
         private DataSource dataSource;
 
+        @Autowired
+        public ApiWebSecurityConfigurerAdapter(CustomUserDetailsService userDetailsService, ConnectionFactoryLocator connectionFactoryLocator,
+                                               UsersConnectionRepository usersConnectionRepository, ConnectionSignUp facebookConnectionSignup, DataSource dataSource) {
+            this.userDetailsService = userDetailsService;
+            this.connectionFactoryLocator = connectionFactoryLocator;
+            this.usersConnectionRepository = usersConnectionRepository;
+            this.facebookConnectionSignup = facebookConnectionSignup;
+            this.dataSource = dataSource;
+        }
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
